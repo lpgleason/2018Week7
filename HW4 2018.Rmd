@@ -44,9 +44,9 @@ Write the R code that will make that happen.
 
 ```{r Answer 1}
 
-pattern <- 'g?og?'
+vText <- c("google", "logo", "dig", "blog", "boogie")
+pattern <- 'og+|g+|go+|ogo+'
 gsub(pattern, '.', vText)
-
 
 ```
 
@@ -67,6 +67,19 @@ paste(x, y, z, collapse = NULL)
 
 Extra credit: What is the difference if you use the `paste0` function instead of the `paste` function above?
 
+```{r extra credit}
+
+x <- "I AM SAM. I AM SAM. SAM I AM."
+y <- "THAT SAM-I-AM! THAT SAM-I-AM! I DO NOT LIKE THAT SAM-I-AM!"
+z <- "DO YOU LIKE GREEN EGGS AND HAM?"
+
+paste0(x, y, z, collapse = NULL)
+
+
+```
+
+When using the `paste0` function instead of the `paste` function, there are no spaces placed between these strings of text when they are joined.  
+
 ####Problem 2.
 
 Suppose that you now have 4 lines of text as follows:
@@ -80,7 +93,7 @@ Z <- "And the dish ran away with the spoon."
 
 ```
 
-Write the R code below to merge these 3 strings.
+Write the R code below to merge these 4 strings.
 
 ####Answer to Problem 2.
 
@@ -204,7 +217,7 @@ mySeparatedNewString
 
 ###Section 6.
 
-On another occasion, I need the same string split so that the last word comes off, and the rest remains intact. I can achieve that in the following way:
+On another occasion, I need the same string split so that the first word comes off, and the rest remains intact. I can achieve that in the following way:
 
 ```{r Intro 6}
 
@@ -355,8 +368,10 @@ Note that the word `head` also starts with `he` but we don't want to substitute 
 ```{r Answer 10}
 
 pun <- "A statistician can have his head in an oven and his feet in ice, and he will say that on the average he feels fine"
-punModified3 <- stri_replace_first_fixed(pun, c("he", "his"), c("she", "her"), vectorize_all = FALSE)
+punModified3 <- stri_replace_all_fixed(pun, c(" he ", " his "), c(" she ", " her "), vectorize_all = FALSE)
 punModified3
 
 ```
 
+##Link for Homework File
+[https://github.com/lpgleason/2018Week7.git](https://github.com/lpgleason/2018Week7.git)

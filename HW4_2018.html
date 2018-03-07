@@ -9,8 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Vicki Hertzberg" />
+<meta name="author" content="Lacey Gleason" />
 
+<meta name="date" content="2018-03-06" />
 
 <title>HW4</title>
 
@@ -119,8 +120,8 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">HW4</h1>
-<h4 class="author"><em>Vicki Hertzberg</em></h4>
-<h4 class="date"><em>2/17/2018</em></h4>
+<h4 class="author"><em>Lacey Gleason</em></h4>
+<h4 class="date"><em>03/06/2018</em></h4>
 
 </div>
 
@@ -142,7 +143,10 @@ gsub(pattern, '.', vText)</code></pre>
 </div>
 <div id="answer-to-problem-1." class="section level4">
 <h4>Answer to Problem 1.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>vText &lt;- c(&quot;google&quot;, &quot;logo&quot;, &quot;dig&quot;, &quot;blog&quot;, &quot;boogie&quot;)
+pattern &lt;- 'og+|g+|go+|ogo+'
+gsub(pattern, '.', vText)</code></pre>
+<pre><code>## [1] &quot;..le&quot;  &quot;l.&quot;    &quot;di.&quot;   &quot;bl.&quot;   &quot;bo.ie&quot;</code></pre>
 </div>
 </div>
 <div id="section-2." class="section level3">
@@ -155,6 +159,13 @@ z &lt;- &quot;DO YOU LIKE GREEN EGGS AND HAM?&quot;
 paste(x, y, z, collapse = NULL)</code></pre>
 <pre><code>## [1] &quot;I AM SAM. I AM SAM. SAM I AM. THAT SAM-I-AM! THAT SAM-I-AM! I DO NOT LIKE THAT SAM-I-AM! DO YOU LIKE GREEN EGGS AND HAM?&quot;</code></pre>
 <p>Extra credit: What is the difference if you use the <code>paste0</code> function instead of the <code>paste</code> function above?</p>
+<pre class="r"><code>x &lt;- &quot;I AM SAM. I AM SAM. SAM I AM.&quot;
+y &lt;- &quot;THAT SAM-I-AM! THAT SAM-I-AM! I DO NOT LIKE THAT SAM-I-AM!&quot;
+z &lt;- &quot;DO YOU LIKE GREEN EGGS AND HAM?&quot;
+
+paste0(x, y, z, collapse = NULL)</code></pre>
+<pre><code>## [1] &quot;I AM SAM. I AM SAM. SAM I AM.THAT SAM-I-AM! THAT SAM-I-AM! I DO NOT LIKE THAT SAM-I-AM!DO YOU LIKE GREEN EGGS AND HAM?&quot;</code></pre>
+<p>When using the <code>paste0</code> function instead of the <code>paste</code> function, there are no spaces placed between these strings of text when they are joined.</p>
 <div id="problem-2." class="section level4">
 <h4>Problem 2.</h4>
 <p>Suppose that you now have 4 lines of text as follows:</p>
@@ -162,11 +173,12 @@ paste(x, y, z, collapse = NULL)</code></pre>
 X &lt;- &quot;The cow jumped over the moon.&quot;
 Y &lt;- &quot;The little boy laughed to see such a sport,&quot;
 Z &lt;- &quot;And the dish ran away with the spoon.&quot;</code></pre>
-<p>Write the R code below to merge these 3 strings.</p>
+<p>Write the R code below to merge these 4 strings.</p>
 </div>
 <div id="answer-to-problem-2." class="section level4">
 <h4>Answer to Problem 2.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>paste(W, X, Y, Z, collapse = NULL)</code></pre>
+<pre><code>## [1] &quot;Hey Diddle Diddle, the cat and the fiddle, The cow jumped over the moon. The little boy laughed to see such a sport, And the dish ran away with the spoon.&quot;</code></pre>
 </div>
 </div>
 <div id="section-3." class="section level3">
@@ -188,7 +200,10 @@ Z &lt;- &quot;And the dish ran away with the spoon.&quot;</code></pre>
 </div>
 <div id="answer-to-problem-3." class="section level4">
 <h4>Answer to Problem 3.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>paste(W, X, Y, Z, NA, collapse = NULL)</code></pre>
+<pre><code>## [1] &quot;Hey Diddle Diddle, the cat and the fiddle, The cow jumped over the moon. The little boy laughed to see such a sport, And the dish ran away with the spoon. NA&quot;</code></pre>
+<pre class="r"><code>str_c(W, X, Y, Z, NA, collapse = NULL)</code></pre>
+<pre><code>## [1] NA</code></pre>
 </div>
 </div>
 <div id="section-4." class="section level3">
@@ -207,7 +222,11 @@ last5letters</code></pre>
 </div>
 <div id="answer-to-problem-4." class="section level4">
 <h4>Answer to Problem 4.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>herName &lt;- &quot;Melinda Higgins&quot;
+Length &lt;- str_length(herName)
+last6letters &lt;- str_sub(herName, Length-5, Length)
+last6letters</code></pre>
+<pre><code>## [1] &quot;iggins&quot;</code></pre>
 </div>
 </div>
 <div id="section-5" class="section level3">
@@ -231,12 +250,19 @@ mySeparatedString</code></pre>
 </div>
 <div id="answer-to-problem-5." class="section level4">
 <h4>Answer to Problem 5.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>#the separator is the character &quot;_&quot;
+
+mySeparatedNewString &lt;- str_split(myNewString, &quot;_&quot;)
+mySeparatedNewString</code></pre>
+<pre><code>## [[1]]
+##  [1] &quot;Now&quot;     &quot;is&quot;      &quot;the&quot;     &quot;time&quot;    &quot;for&quot;     &quot;all&quot;     &quot;good&quot;   
+##  [8] &quot;men&quot;     &quot;to&quot;      &quot;come&quot;    &quot;to&quot;      &quot;the&quot;     &quot;aid&quot;     &quot;of&quot;     
+## [15] &quot;their&quot;   &quot;country&quot;</code></pre>
 </div>
 </div>
 <div id="section-6." class="section level3">
 <h3>Section 6.</h3>
-<p>On another occasion, I need the same string split so that the last word comes off, and the rest remains intact. I can achieve that in the following way:</p>
+<p>On another occasion, I need the same string split so that the first word comes off, and the rest remains intact. I can achieve that in the following way:</p>
 <pre class="r"><code>myString &lt;- &quot;The_quick_brown_fox_jumped_over_the_lazy_dog&quot;
 myNewSplitSpring &lt;- str_split(myString, &quot;_&quot;, n=2)
 myNewSplitSpring</code></pre>
@@ -251,7 +277,12 @@ myNewSplitSpring</code></pre>
 </div>
 <div id="answer-6." class="section level4">
 <h4>Answer 6.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>myNewString &lt;- &quot;Now_is_the_time_for_all_good_men_to_come_to_the_aid_of_their_country&quot;
+myNewSplitSpring2 &lt;- str_split(myNewString, &quot;_&quot;, n=2)
+myNewSplitSpring2</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Now&quot;                                                             
+## [2] &quot;is_the_time_for_all_good_men_to_come_to_the_aid_of_their_country&quot;</code></pre>
 </div>
 </div>
 <div id="section-7." class="section level3">
@@ -267,7 +298,9 @@ stri_count_words(newString)</code></pre>
 </div>
 <div id="answer-7." class="section level4">
 <h4>Answer 7.</h4>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>yourNewString &lt;- &quot;Now is the time for all good men to come to the aid of their country&quot;
+stri_count_words(yourNewString)</code></pre>
+<pre><code>## [1] 16</code></pre>
 </div>
 </div>
 <div id="section-8." class="section level3">
@@ -283,7 +316,9 @@ mathematicians[stri_duplicated(mathematicians)]</code></pre>
 </div>
 <div id="answer-8." class="section level4">
 <h4>Answer 8.</h4>
-<pre class="r"><code>#Insert your code to address the problem here</code></pre>
+<pre class="r"><code>nurses &lt;-c(&quot;Nightingale&quot;, &quot;Barton&quot;, &quot;Dix&quot;, &quot;Sanger&quot;, &quot;Barton&quot;, &quot;Woodruff&quot;, &quot;Lincoln&quot;, &quot;Dix&quot;, &quot;Peplau&quot;)
+nurses[stri_duplicated(nurses)]</code></pre>
+<pre><code>## [1] &quot;Barton&quot; &quot;Dix&quot;</code></pre>
 </div>
 </div>
 <div id="section-9." class="section level3">
@@ -299,7 +334,9 @@ mathematicians[stri_duplicated(mathematicians)]</code></pre>
 </div>
 <div id="answer-9." class="section level4">
 <h4>Answer 9.</h4>
-<pre class="r"><code>#Insert the code to solve the problem here.</code></pre>
+<pre class="r"><code>DIGITS &lt;- c(&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;)
+stri_join(DIGITS, separators = c(&quot;_&quot;,&quot;-&quot;), collapse = &quot;&quot;)</code></pre>
+<pre><code>## [1] &quot;0_1-2_3-4_5-6_7-8_9-&quot;</code></pre>
 </div>
 </div>
 <div id="section-10" class="section level3">
@@ -312,14 +349,23 @@ punModified</code></pre>
 <div id="problem-10" class="section level4">
 <h4>Problem 10</h4>
 <p>Using the original pun, replace <code>his</code> with <code>her</code> and <code>he</code> with <code>she</code>:</p>
-<pre class="r"><code>pun</code></pre>
-<pre><code>## [1] &quot;A statistician can have his head in an oven and his feet in ice, and he will say that on the average he feels fine&quot;</code></pre>
+<pre class="r"><code>pun &lt;- &quot;A statistician can have his head in an oven and his feet in ice, and he will say that on the average he feels fine&quot;
+punModified2 &lt;- stri_replace_all_fixed(pun, c(&quot;he&quot;, &quot;his&quot;), c(&quot;she&quot;, &quot;her&quot;), vectorize_all = FALSE)
+punModified2</code></pre>
+<pre><code>## [1] &quot;A statistician can have her shead in an oven and her feet in ice, and she will say that on tshe average she feels fine&quot;</code></pre>
 </div>
 <div id="answer-10" class="section level4">
 <h4>Answer 10</h4>
 <p>Note that the word <code>head</code> also starts with <code>he</code> but we don’t want to substitute <code>she</code> into there.</p>
-<pre class="r"><code>#Insert the code to answer the problem here.</code></pre>
+<pre class="r"><code>pun &lt;- &quot;A statistician can have his head in an oven and his feet in ice, and he will say that on the average he feels fine&quot;
+punModified3 &lt;- stri_replace_all_fixed(pun, c(&quot; he &quot;, &quot; his &quot;), c(&quot; she &quot;, &quot; her &quot;), vectorize_all = FALSE)
+punModified3</code></pre>
+<pre><code>## [1] &quot;A statistician can have her head in an oven and her feet in ice, and she will say that on the average she feels fine&quot;</code></pre>
 </div>
+</div>
+<div id="link-for-homework-file" class="section level2">
+<h2>Link for Homework File</h2>
+<p><a href="https://github.com/lpgleason/2018Week7.git" class="uri">https://github.com/lpgleason/2018Week7.git</a></p>
 </div>
 
 
