@@ -1,7 +1,7 @@
 ---
 title: "HW4"
-author: "Vicki Hertzberg"
-date: "2/17/2018"
+author: "Lacey Gleason"
+date: "03/06/2018"
 output: html_document
 ---
 
@@ -44,7 +44,9 @@ Write the R code that will make that happen.
 
 ```{r Answer 1}
 
-#Insert the code to answer the problem here.
+pattern <- 'g?og?'
+gsub(pattern, '.', vText)
+
 
 ```
 
@@ -84,7 +86,7 @@ Write the R code below to merge these 3 strings.
 
 ```{r Answer 2}
 
-#Insert the code to answer the problem here.
+paste(W, X, Y, Z, collapse = NULL)
 
 ```
 
@@ -120,7 +122,8 @@ Z <- "And the dish ran away with the spoon."
 
 ```{r Answer 3}
 
-#Insert the code to answer the problem here.
+paste(W, X, Y, Z, NA, collapse = NULL)
+str_c(W, X, Y, Z, NA, collapse = NULL)
 
 ```
 
@@ -152,7 +155,10 @@ Write the code below to extract the last 6 letters of her name.
 
 ```{r Answer 4}
 
-#Insert the code to answer the problem here.
+herName <- "Melinda Higgins"
+Length <- str_length(herName)
+last6letters <- str_sub(herName, Length-5, Length)
+last6letters
 
 ```
 
@@ -188,7 +194,10 @@ Split this new string into separate words:
 
 ```{r Answer 5}
 
-#Insert the code to answer the problem here.
+#the separator is the character "_"
+
+mySeparatedNewString <- str_split(myNewString, "_")
+mySeparatedNewString
 
 ```
 
@@ -221,7 +230,9 @@ Split off the first word but leave the rest intact.
 
 ```{r Answer 6}
 
-#Insert the code to answer the problem here.
+myNewString <- "Now_is_the_time_for_all_good_men_to_come_to_the_aid_of_their_country"
+myNewSplitSpring2 <- str_split(myNewString, "_", n=2)
+myNewSplitSpring2
 
 ```
 
@@ -249,7 +260,8 @@ Use the `stri_count_words` function as above to count the number of distinct wor
 
 ```{r Answer 7}
 
-#Insert the code to answer the problem here.
+yourNewString <- "Now is the time for all good men to come to the aid of their country"
+stri_count_words(yourNewString)
 
 ```
 
@@ -276,7 +288,8 @@ nurses <-c("Nightingale", "Barton", "Dix", "Sanger", "Barton", "Woodruff", "Linc
 
 ```{r Answer 8}
 
-#Insert your code to address the problem here
+nurses <-c("Nightingale", "Barton", "Dix", "Sanger", "Barton", "Woodruff", "Lincoln", "Dix", "Peplau")
+nurses[stri_duplicated(nurses)]
 
 ```
 
@@ -306,7 +319,8 @@ How can we form the string `0_1-2_3-4_5-6_7-8_9-'?
 
 ```{r Answer 9}
 
-#Insert the code to solve the problem here.
+DIGITS <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+stri_join(DIGITS, separators = c("_","-"), collapse = "")
 
 ```
 
@@ -328,7 +342,9 @@ Using the original pun, replace `his` with `her` and ` he ` with ` she `:
 
 ```{r Problem 10}
 
-pun
+pun <- "A statistician can have his head in an oven and his feet in ice, and he will say that on the average he feels fine"
+punModified2 <- stri_replace_all_fixed(pun, c("he", "his"), c("she", "her"), vectorize_all = FALSE)
+punModified2
 
 ```
 
@@ -338,7 +354,9 @@ Note that the word `head` also starts with `he` but we don't want to substitute 
 
 ```{r Answer 10}
 
-#Insert the code to answer the problem here.
+pun <- "A statistician can have his head in an oven and his feet in ice, and he will say that on the average he feels fine"
+punModified3 <- stri_replace_first_fixed(pun, c("he", "his"), c("she", "her"), vectorize_all = FALSE)
+punModified3
 
 ```
 
